@@ -14,7 +14,8 @@
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
-    "format": "npm run prettier:fix && npm run lint:fix"
+    "format": "npm run prettier:fix && npm run lint:fix",
+    "postinstall": "npx simple-git-hooks"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -37,9 +38,19 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "nano-staged": "^0.8.0",
     "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.9",
     "vite-tsconfig-paths": "^3.5.0"
+  },
+  "nano-staged": {
+    "**/*.{ts,tsx}": [
+      "yarn run format"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./node_modules/.bin/nano-staged"
   }
 }
