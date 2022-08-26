@@ -833,11 +833,6 @@ cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-css-maid@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/css-maid/-/css-maid-2.0.1.tgz#b29578c2f778739eff622d215a43dc36574c4157"
-  integrity sha512-oTuWLAnzewwvLCI68wgkHAd+7F7FLHy7otCWPd/g4sbwRHmQKF1hQoMdtTgrql23QYO07wf/vsytPZfGME6D0Q==
-
 csstype@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
