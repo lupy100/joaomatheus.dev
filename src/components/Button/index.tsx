@@ -2,7 +2,7 @@ import { FunctionComponent, ReactNode } from 'react'
 import { StyledButton } from './styles'
 
 export interface IButtonProps {
-  color: string
+  color: 'primary' | 'secondary'
   children?: ReactNode
   onClick: () => void
 }
