@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { media } from '~/config/breakpoints'
-
+import wood from '~/assets/light-wood-planks.jpg'
 interface ILedProps {
   active?: boolean
 }
@@ -13,7 +13,7 @@ export const StyledTime = styled.time({
   display: 'flex',
   width: 'fit-content',
   padding: widthBase,
-  backgroundImage: `url('src/assets/light-wood-planks.jpg')`,
+  backgroundImage: `url(${wood})`,
   backgroundSize: 'cover',
   borderRadius: widthBase,
 })
