@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
-import { media } from '~/config/breakpoints'
 import wood from '~/assets/light-wood-planks.jpg'
 interface ILedProps {
   active?: boolean
+  color: string
 }
+
 const proportion = 30
 
 const widthBase = `${proportion}px`
@@ -13,6 +14,7 @@ export const StyledTime = styled.time({
   display: 'flex',
   width: 'fit-content',
   padding: widthBase,
+  backgroundColor: '#f6e5d4',
   backgroundImage: `url(${wood})`,
   backgroundSize: 'cover',
   borderRadius: widthBase,
@@ -28,17 +30,14 @@ export const Wrapper = styled.div({
   display: 'flex',
 })
 
-export const Led = styled.div<ILedProps>(({ theme, active }) => ({
+export const Led = styled.div<ILedProps>(({ active, color }) => ({
   width: widthBase,
   height: widthBase,
-  background: active ? theme.color.primary : 'white',
+  background: active ? color : 'white',
   borderRadius: `calc(${widthBase} / 5)`,
-  [media.tablet]: {
-    background: active ? theme.color.secondary : 'white',
-  },
 }))
 
-export const Column = styled.div({
+export const StyledColumn = styled.div({
   display: 'flex',
   alignItems: 'center',
   flexWrap: 'wrap',
@@ -54,10 +53,10 @@ export const Column = styled.div({
   '&.column-2, &.column-4': {
     width: `calc(${widthBase} * 3 + ${marginBase} * 2)`,
     [String(Led)]: {
-      '&:nth-child(-n+6)': {
+      '&:nth-of-type(-n+6)': {
         marginBottom: marginBase,
       },
-      '&:not(:nth-child(3n))': {
+      '&:not(&:nth-of-type(3n))': {
         marginRight: marginBase,
       },
     },
@@ -69,10 +68,10 @@ export const Column = styled.div({
     width: `calc(${widthBase} * 2 + ${marginBase})`,
     marginRight: widthBase,
     [String(Led)]: {
-      '&:nth-child(-n+4)': {
+      '&:nth-of-type(-n+4)': {
         marginBottom: marginBase,
       },
-      '&:not(:nth-child(2n))': {
+      '&:not(&:nth-of-type(2n))': {
         marginRight: marginBase,
       },
     },
