@@ -9,32 +9,36 @@ const TixClock: FunctionComponent = () => {
 
   setInterval(() => {
     const today = new Date(),
-      hours = today.getHours(),
+      hours = ('0' + today.getHours()).slice(-2),
       min = today.getMinutes(),
       sec = today.getSeconds()
     setCurrentHours(`${hours}:${min}:${sec}`)
   }, 1000)
 
   useEffect(() => {
-    console.log('tio')
     updateTime()
   }, [currentHours])
 
   const updateTime = () => {
-    teste({ aaaaa: 5, tamanhoArary: 9 })
-    console.log(tixClock)
-    // setTixClock(aux)
+    const splitedNumbers = currentHours.replace(/:/g, '').split('')
+    console.log(splitedNumbers)
+    putLedsTime(parseInt(splitedNumbers[0]), 3, 1)
+    putLedsTime(parseInt(splitedNumbers[1]), 9, 2)
+    putLedsTime(parseInt(splitedNumbers[2]), 6, 3)
+    putLedsTime(parseInt(splitedNumbers[3]), 9, 4)
   }
 
-  const teste = ({ aaaaa, tamanhoArary }) => {
+  const putLedsTime = (currentTimeValue: number, tamanhoArary: number, column: number) => {
     const aux = TIX_CLOCK
-    aux['column-2'].leds = Array.from({ length: tamanhoArary }, () => false)
+    aux[`column-${column}`].leds = Array.from({ length: tamanhoArary }, () => false)
 
-    for (let index = 0; index < aaaaa; index++) {
-      const randomNumber = parseInt(Math.random() * (tamanhoArary - 0) + 0)
-      aux['column-2'].leds[randomNumber] = true
+    for (let index = 0; index < currentTimeValue; index++) {
+      const randomNumber = Math.floor(Math.random() * (tamanhoArary - 0) + 0)
+      aux[`column-${column}`].leds[randomNumber]
+        ? (currentTimeValue += 1)
+        : (aux[`column-${column}`].leds[randomNumber] = true)
     }
-    aux['column-2'].color = 'pink'
+    aux[`column-${column}`].color = 'pink'
     setTixClock(aux)
   }
 
@@ -51,7 +55,6 @@ const TixClock: FunctionComponent = () => {
 
   return (
     <>
-      {currentHours}
       <StyledTime dateTime='10:37'>
         <Wrapper>
           <Column columnName='column-1' />
