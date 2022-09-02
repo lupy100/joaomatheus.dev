@@ -10,7 +10,7 @@ const TixClock: FunctionComponent = () => {
   setInterval(() => {
     const today = new Date(),
       hours = ('0' + today.getHours()).slice(-2),
-      min = today.getMinutes(),
+      min = ('0' + today.getMinutes()).slice(-2),
       sec = today.getSeconds()
     setCurrentHours(`${hours}:${min}:${sec}`)
   }, 1000)
